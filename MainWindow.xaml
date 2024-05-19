@@ -1,0 +1,108 @@
+﻿<Window x:Class="SortingAlgorithmAnimation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SortingAlgorithmAnimation"
+        mc:Ignorable="d"
+        Title="SortingAlgorithmAnimation" Height="500" Width="680" MinWidth="680" MinHeight="500"
+        Loaded="MainWindow_OnLoaded"
+        Closed="MainWindow_OnClosed">
+    <Window.Resources>
+        <local:DoubleToTimeStringConverter x:Key="DoubleToTimeStringConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderBrush="#aaaaaa" BorderThickness="0,0,0.5,0">
+            <StackPanel Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">SampleCount</Label>
+                    <TextBox Grid.Column="1" Margin="8" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
+                             Text="{Binding SampleCount}" />
+                </Grid>
+                <Button x:Name="ShuffleButton" Margin="8" Content="Shuffle" Click="ShuffleButton_Click" />
+
+                <Button x:Name="ReverseButton" Margin="8" Content="Reverse" Click="ReverseButton_OnClick" />
+
+
+                <Rectangle Margin="0,8" Height="0.5" HorizontalAlignment="Stretch" Fill="#aaaaaa" />
+
+                <ComboBox x:Name="MyComboBox" Margin="8" SelectionChanged="MyComboBox_SelectionChanged" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">Delay(ms)</Label>
+                    <TextBox Grid.Column="1" Margin="8" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
+                             Text="{Binding Delay}" />
+                </Grid>
+
+                <Button x:Name="RunButton" Margin="8" Content="Run" Click="RunButton_Click" />
+                <Button x:Name="StopButton" Margin="8" Content="Stop" Click="StopButton_OnClick" />
+
+                <Rectangle Margin="0,8" Height="0.5" HorizontalAlignment="Stretch" Fill="#aaaaaa" />
+
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Column="0" Fill="Green" Width="16" Height="16" />
+                    <Label Grid.Column="1" Content="Read" />
+                    <Rectangle Grid.Column="2" Fill="Red" Width="16" Height="16" />
+                    <Label Grid.Column="3" Content="Write" />
+                    <Rectangle Grid.Column="4" Fill="Blue" Width="16" Height="16" />
+                    <Label Grid.Column="5" Content="Swap" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">ReadCount</Label>
+                    <Label Grid.Column="1" Margin="4" Content="{Binding ReadCount}" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">WriteCount</Label>
+                    <Label Grid.Column="1" Margin="4" Content="{Binding WriteCount}" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">ExternalSpace</Label>
+                    <Label Grid.Column="1" Margin="4" Content="{Binding ExternalSpace}" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Margin="4">ElapsedTime</Label>
+                    <Label Grid.Column="1" Margin="4"
+                           Content="{Binding ElapsedTime,Converter={StaticResource DoubleToTimeStringConverter}}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <local:MyCanvas Grid.Column="1" x:Name="MyCanvas" Margin="8" Background="#333333" />
+        <Border Grid.Column="1" BorderBrush="Black" Margin="8" BorderThickness="1" />
+    </Grid>
+</Window>
