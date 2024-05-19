@@ -15,7 +15,7 @@ public class ViewModel : INotifyPropertyChanged
 
     private int _readCount;
 
-    private int _sampleCount = 16;
+    private int _sampleCount = 32;
 
     private int _writeCount;
 
